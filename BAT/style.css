@@ -1,3 +1,102 @@
 body {
     background: #97b;
 }
+
+.drawing {
+    --skin: #456;
+    --skin-light: #fff2;
+    --skin-dark: #0002;
+    --skin2: #88c;
+    font-size: 1vmin;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80em;
+    aspect-ratio: 3/2;
+
+    & *, 
+    & *::before,
+    & *::after {
+        position: absolute;
+        box-sizing: border-box;
+    }
+
+    .head  {
+        width: 40%;
+        height: 55%;
+        border: 1.25em solid;
+        border-radius: 100% 100% 100% 100% / 130% 130% 76% 76%;
+        background: var(--skin);
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 8vmin 0 -6vmin var(--skin-dark),
+        inset 1em 1em 0 -0.5em var(--skin-light)
+        inset -2em -1em 0 -0.5em var(--skin-dark);
+
+        .nose {
+            width: 28%;
+            aspect-ratio: 4/2.25;
+            border: 0.8em solid;
+            border-radius: 100% / 120% 120% 90% 90%;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 66.6%;
+            box-shadow: 
+            inset 0 -1.25em 0 -1em var(--skin-dark),
+            inset 0 1.5em 0 1em var(--skin-light);
+            background: 
+            radial-gradient(70% 150% at 30% 50%, #000 13%, #0000 0),
+            radial-gradient(70% 150% at 70% 50%, #000 13%, #0000 0),
+            #e89;
+        }
+        
+        .mouth {
+            width: 25%;
+            aspect-ratio: 4/2.25;
+            border: 0.8em solid;
+            border-radius: 50% / 10% 10% 100% 100%;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 77%;
+            box-shadow: inset 2em 1em var(--skin-dark);
+            background: 
+            radial-gradient(60% 100% at 50% 100%, #c54 55%, #000 0);
+
+            &::before,
+            &::after {
+                content: "";
+                width: 25%;
+                height: 45%;
+                background: #fff;
+                border-radius: 50% / 0 0 100% 100%;
+                left: 5%;
+                top: 7%;
+                clip-path: polygon(0 0, 100% 0, 70% 100%, 30% 100%);
+                box-shadow: inset 0.5em 0 var(--skin-dark);
+            }
+
+            &::after {
+                left: auto;
+                right: 5%;
+            }
+        }
+
+        .eye {
+            --pos: 23%;
+            width: 23%;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            top: 45%;
+            left: var(--pos);
+            transform: translateX(-50%);
+            background: 
+            radial-gradient(circle at 45% 13%, #fff 5%, #0000 6%),
+            radial-gradient(at 33% 33%, #fff 16%, #000 17%);
+
+            & + & {
+                left: calc(100% - var(--pos));
+            }
+        }
+    }
+}
